@@ -86,6 +86,12 @@ export default function AdminDashboardLayout({
                         Events
                     </Link>
                     <Link
+                        href="/admin/dashboard/gallery"
+                        className="px-4 py-2 rounded-full bg-white/70 border border-amber-200 hover:bg-brand-ramblue hover:text-white transition"
+                    >
+                        Gallery
+                    </Link>
+                    <Link
                         href="/admin/dashboard/members"
                         className="px-4 py-2 rounded-full bg-white/70 border border-amber-200 hover:bg-brand-ramblue hover:text-white transition"
                     >

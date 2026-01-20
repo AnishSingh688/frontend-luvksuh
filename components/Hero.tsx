@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { shootArrow } from "@/utils/shootArrow";
 
 export default function Hero() {
@@ -52,7 +53,9 @@ export default function Hero() {
                     </p>
                     <div className="mt-7 flex flex-wrap gap-3">
                         <a
-                            href="#membership"
+                            href="https://www.facebook.com/luvkush.pratisthan"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="rounded-full px-6 py-3 bg-brand-ramblue text-white hover:shadow-lg shadow transition"
                         >
                             Join the Samaj
@@ -85,8 +88,8 @@ export default function Hero() {
                     <div className="absolute -inset-8 bg-gradient-to-tr from-amber-100 via-transparent to-transparent rounded-[2rem] blur-2xl"></div>
                     <div className="relative rounded-3xl p-6 bg-white/70 border border-amber-200 shadow-lg animate-float">
                         {/* Stylized bow & string using SVG */}
-
-                        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+                        <Image src="/assets/uploads/logo/logo2.png" alt="Community" width={800} height={600} className="w-full h-80 object-contain bg-white" />
+                        {/* <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <linearGradient id="bowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" stopColor="#8B4513" />
@@ -118,7 +121,7 @@ export default function Hero() {
                                 <path d="M-110 0 L-130 -12 L-115 -1.5 Z" fill="#ef4444" />
                                 <path d="M-110 0 L-130 12 L-115 1.5 Z" fill="#ef4444" />
                             </g>
-                        </svg>
+                        </svg> */}
                         <p className="mt-4 text-center text-sm text-slate-600">
                             Symbol of courage, focus, and harmony.
                         </p>

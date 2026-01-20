@@ -29,7 +29,7 @@ export default function Header() {
                     <Link href="/#about" className="hover:text-brand-ramblue">About</Link>
                     <Link href="/#programs" className="hover:text-brand-ramblue">Programs</Link>
                     <Link href="/#events" className="hover:text-brand-ramblue">Events</Link>
-                    <Link href="/#membership" className="hover:text-brand-ramblue">Membership</Link>
+                    {/* <Link href="/#membership" className="hover:text-brand-ramblue">Membership</Link> */}
                     <Link href="/#contact" className="hover:text-brand-ramblue">Contact</Link>
                     <Link
                         href="/admin/login"

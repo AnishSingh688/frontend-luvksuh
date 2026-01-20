@@ -10,6 +10,7 @@ import Membership from "@/components/Membership";
 import Donate from "@/components/Donate";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
       <About />
       <Programs />
       <Events />
+      <Gallery />
       <Members />
 
       {/* <section id="membership" className="py-20 bg-gradient-to-b from-white to-amber-50">
