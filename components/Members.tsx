@@ -13,6 +13,10 @@ interface Member {
     showOnHome: boolean;
 }
 
+import Carousel from "./Carousel";
+
+// ... (imports remain)
+
 export default function Members() {
     const [members, setMembers] = useState<Member[]>([]);
     const [loading, setLoading] = useState(true);
@@ -51,37 +55,24 @@ export default function Members() {
                     The dedicated individuals working behind the scenes to drive our mission forward.
                 </p>
 
-                <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {displayMembers.map((member) => (
-                        <div
-                            key={member.id}
-                            className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-amber-100 group text-left"
-                        >
-                            <div className="aspect-[3/4] relative overflow-hidden bg-slate-100">
-                                {member.photoUrl ? (
-                                    <img
-                                        src={member.photoUrl}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-brand-ramblue/5 text-brand-ramblue">
-                                        <svg className="w-20 h-20 opacity-20" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                )}
-                            </div>
-                            <div className="p-4 text-center">
-                                <h3 className="font-display font-semibold text-lg text-brand-ramblue">
-                                    {member.name}
-                                </h3>
-                                <p className="text-brand-saffron font-medium text-sm mt-1 uppercase tracking-wider">
-                                    {member.designation}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                <div className="mt-12">
+                    {/* Mobile: Carousel View */}
+                    <div className="md:hidden">
+                        <Carousel>
+                            {displayMembers.map((member) => (
+                                <div key={member.id} className="min-w-[280px] snap-center">
+                                    <MemberCard member={member} />
+                                </div>
+                            ))}
+                        </Carousel>
+                    </div>
+
+                    {/* Desktop: Grid View */}
+                    <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+                        {displayMembers.map((member) => (
+                            <MemberCard key={member.id} member={member} />
+                        ))}
+                    </div>
                 </div>
 
                 <div className="mt-12">
@@ -97,5 +88,35 @@ export default function Members() {
                 </div>
             </div>
         </section>
+    );
+}
+
+function MemberCard({ member }: { member: Member }) {
+    return (
+        <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-amber-100 group text-left h-full">
+            <div className="aspect-[3/4] relative overflow-hidden bg-slate-100">
+                {member.photoUrl ? (
+                    <img
+                        src={member.photoUrl}
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-brand-ramblue/5 text-brand-ramblue">
+                        <svg className="w-20 h-20 opacity-20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+                )}
+            </div>
+            <div className="p-4 text-center">
+                <h3 className="font-display font-semibold text-lg text-brand-ramblue">
+                    {member.name}
+                </h3>
+                <p className="text-brand-saffron font-medium text-sm mt-1 uppercase tracking-wider">
+                    {member.designation}
+                </p>
+            </div>
+        </div>
     );
 }

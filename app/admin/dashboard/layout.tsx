@@ -30,7 +30,7 @@ export default function AdminDashboardLayout({
         <div className="min-h-screen bg-gradient-to-b from-white via-amber-50/40 to-amber-100/40">
             {/* Header */}
             <header className="bg-white/70 backdrop-blur border-b border-amber-200">
-                <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white">
                             <Image
@@ -66,7 +66,7 @@ export default function AdminDashboardLayout({
 
             <div className="max-w-7xl mx-auto px-4 py-8">
                 {/* Navigation */}
-                <nav className="mb-8 flex gap-4">
+                <nav className="mb-8 flex flex-wrap gap-4 justify-center md:justify-start">
                     <Link
                         href="/admin/dashboard"
                         className="px-4 py-2 rounded-full bg-white/70 border border-amber-200 hover:bg-brand-ramblue hover:text-white transition"

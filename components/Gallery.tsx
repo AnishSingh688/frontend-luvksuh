@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import ImageLightbox from "./ImageLightbox";
+import Carousel from "./Carousel";
 
 interface GalleryItem {
     id: string;
@@ -108,22 +109,39 @@ export default function Gallery() {
                     </button>
                 </div>
 
-                {/* Gallery Grid */}
+                {/* Gallery Grid/Carousel */}
                 <div className="mt-12">
                     {filteredItems.length === 0 ? (
                         <div className="text-center text-slate-600">
                             No gallery items available.
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filteredItems.map((item, index) => (
-                                <GalleryCard
-                                    key={item.id}
-                                    item={item}
-                                    onClick={() => setSelectedIndex(index)}
-                                />
-                            ))}
-                        </div>
+                        <>
+                            {/* Mobile: Carousel View */}
+                            <div className="md:hidden">
+                                <Carousel>
+                                    {filteredItems.map((item, index) => (
+                                        <div key={item.id} className="min-w-[300px] snap-center">
+                                            <GalleryCard
+                                                item={item}
+                                                onClick={() => setSelectedIndex(index)}
+                                            />
+                                        </div>
+                                    ))}
+                                </Carousel>
+                            </div>
+
+                            {/* Desktop: Grid View */}
+                            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {filteredItems.map((item, index) => (
+                                    <GalleryCard
+                                        key={item.id}
+                                        item={item}
+                                        onClick={() => setSelectedIndex(index)}
+                                    />
+                                ))}
+                            </div>
+                        </>
                     )}
                 </div>
             </div>

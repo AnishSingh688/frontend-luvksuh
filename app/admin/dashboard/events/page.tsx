@@ -90,51 +90,53 @@ export default function EventsManagement() {
             )}
 
             <div className="bg-white/70 backdrop-blur border border-amber-200 rounded-2xl overflow-hidden shadow">
-                <table className="w-full">
-                    <thead className="bg-brand-ramblue text-white">
-                        <tr>
-                            <th className="px-6 py-3 text-left">Title</th>
-                            <th className="px-6 py-3 text-left">Date</th>
-                            <th className="px-6 py-3 text-left">Location</th>
-                            <th className="px-6 py-3 text-left">Description</th>
-                            <th className="px-6 py-3 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {events.length === 0 ? (
+                <div className="overflow-x-auto">
+                    <table className="w-full min-w-[800px]">
+                        <thead className="bg-brand-ramblue text-white">
                             <tr>
-                                <td colSpan={5} className="px-6 py-8 text-center text-slate-500">
-                                    No events found. Create one to get started!
-                                </td>
+                                <th className="px-6 py-3 text-left">Title</th>
+                                <th className="px-6 py-3 text-left">Date</th>
+                                <th className="px-6 py-3 text-left">Location</th>
+                                <th className="px-6 py-3 text-left">Description</th>
+                                <th className="px-6 py-3 text-right">Actions</th>
                             </tr>
-                        ) : (
-                            events.map((event) => (
-                                <tr key={event.id} className="border-t border-amber-200">
-                                    <td className="px-6 py-4 font-semibold">{event.title}</td>
-                                    <td className="px-6 py-4 text-sm">{event.date}</td>
-                                    <td className="px-6 py-4 text-sm">{event.location}</td>
-                                    <td className="px-6 py-4 text-sm text-slate-600">
-                                        {event.description.substring(0, 80)}...
-                                    </td>
-                                    <td className="px-6 py-4 text-right">
-                                        <button
-                                            onClick={() => handleEdit(event)}
-                                            className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(event.id)}
-                                            className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
-                                        >
-                                            Delete
-                                        </button>
+                        </thead>
+                        <tbody>
+                            {events.length === 0 ? (
+                                <tr>
+                                    <td colSpan={5} className="px-6 py-8 text-center text-slate-500">
+                                        No events found. Create one to get started!
                                     </td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
+                            ) : (
+                                events.map((event) => (
+                                    <tr key={event.id} className="border-t border-amber-200">
+                                        <td className="px-6 py-4 font-semibold">{event.title}</td>
+                                        <td className="px-6 py-4 text-sm">{event.date}</td>
+                                        <td className="px-6 py-4 text-sm">{event.location}</td>
+                                        <td className="px-6 py-4 text-sm text-slate-600">
+                                            {event.description.substring(0, 80)}...
+                                        </td>
+                                        <td className="px-6 py-4 text-right">
+                                            <button
+                                                onClick={() => handleEdit(event)}
+                                                className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(event.id)}
+                                                className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

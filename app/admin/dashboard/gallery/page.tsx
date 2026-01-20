@@ -92,61 +92,63 @@ export default function GalleryManagement() {
             )}
 
             <div className="bg-white/70 backdrop-blur border border-amber-200 rounded-2xl overflow-hidden shadow">
-                <table className="w-full">
-                    <thead className="bg-brand-ramblue text-white">
-                        <tr>
-                            <th className="px-6 py-3 text-left">Image</th>
-                            <th className="px-6 py-3 text-left">Title</th>
-                            <th className="px-6 py-3 text-left">Category</th>
-                            <th className="px-6 py-3 text-left">Event Date</th>
-                            <th className="px-6 py-3 text-left">Order</th>
-                            <th className="px-6 py-3 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {items.length === 0 ? (
+                <div className="overflow-x-auto">
+                    <table className="w-full min-w-[800px]">
+                        <thead className="bg-brand-ramblue text-white">
                             <tr>
-                                <td colSpan={6} className="px-6 py-8 text-center text-slate-500">
-                                    No gallery items found. Create one to get started!
-                                </td>
+                                <th className="px-6 py-3 text-left">Image</th>
+                                <th className="px-6 py-3 text-left">Title</th>
+                                <th className="px-6 py-3 text-left">Category</th>
+                                <th className="px-6 py-3 text-left">Event Date</th>
+                                <th className="px-6 py-3 text-left">Order</th>
+                                <th className="px-6 py-3 text-right">Actions</th>
                             </tr>
-                        ) : (
-                            items.map((item) => (
-                                <tr key={item.id} className="border-t border-amber-200">
-                                    <td className="px-6 py-4">
-                                        <img
-                                            src={item.imageUrl}
-                                            alt={item.title}
-                                            className="w-16 h-16 object-cover rounded"
-                                        />
-                                    </td>
-                                    <td className="px-6 py-4 font-semibold">{item.title}</td>
-                                    <td className="px-6 py-4">
-                                        <span className="px-2 py-1 rounded-full bg-brand-gold/20 text-brand-ramblue text-xs font-semibold">
-                                            {item.category}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm">{item.eventDate || "-"}</td>
-                                    <td className="px-6 py-4 text-sm">{item.order}</td>
-                                    <td className="px-6 py-4 text-right">
-                                        <button
-                                            onClick={() => handleEdit(item)}
-                                            className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(item.id)}
-                                            className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
-                                        >
-                                            Delete
-                                        </button>
+                        </thead>
+                        <tbody>
+                            {items.length === 0 ? (
+                                <tr>
+                                    <td colSpan={6} className="px-6 py-8 text-center text-slate-500">
+                                        No gallery items found. Create one to get started!
                                     </td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
+                            ) : (
+                                items.map((item) => (
+                                    <tr key={item.id} className="border-t border-amber-200">
+                                        <td className="px-6 py-4">
+                                            <img
+                                                src={item.imageUrl}
+                                                alt={item.title}
+                                                className="w-16 h-16 object-cover rounded"
+                                            />
+                                        </td>
+                                        <td className="px-6 py-4 font-semibold">{item.title}</td>
+                                        <td className="px-6 py-4">
+                                            <span className="px-2 py-1 rounded-full bg-brand-gold/20 text-brand-ramblue text-xs font-semibold">
+                                                {item.category}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 text-sm">{item.eventDate || "-"}</td>
+                                        <td className="px-6 py-4 text-sm">{item.order}</td>
+                                        <td className="px-6 py-4 text-right">
+                                            <button
+                                                onClick={() => handleEdit(item)}
+                                                className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(item.id)}
+                                                className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

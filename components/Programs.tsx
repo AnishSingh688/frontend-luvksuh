@@ -60,18 +60,34 @@ export default function Programs() {
                         <div className="text-center text-slate-600">
                             No programs available at the moment.
                         </div>
-                    ) : programs.length > 3 ? (
-                        <Carousel>
-                            {programs.map((program) => (
-                                <ProgramCard key={program.id} program={program} />
-                            ))}
-                        </Carousel>
                     ) : (
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {programs.map((program) => (
-                                <ProgramCard key={program.id} program={program} />
-                            ))}
-                        </div>
+                        <>
+                            {/* Mobile: Always Carousel */}
+                            <div className="md:hidden">
+                                <Carousel>
+                                    {programs.map((program) => (
+                                        <ProgramCard key={program.id} program={program} />
+                                    ))}
+                                </Carousel>
+                            </div>
+
+                            {/* Desktop: Existing Logic */}
+                            <div className="hidden md:block">
+                                {programs.length > 3 ? (
+                                    <Carousel>
+                                        {programs.map((program) => (
+                                            <ProgramCard key={program.id} program={program} />
+                                        ))}
+                                    </Carousel>
+                                ) : (
+                                    <div className="grid md:grid-cols-3 gap-6">
+                                        {programs.map((program) => (
+                                            <ProgramCard key={program.id} program={program} />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </>
                     )}
                 </div>
             </div>

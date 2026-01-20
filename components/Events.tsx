@@ -64,18 +64,34 @@ export default function Events() {
                         <div className="text-center text-slate-600">
                             No upcoming events at the moment.
                         </div>
-                    ) : events.length > 3 ? (
-                        <Carousel>
-                            {events.map((event) => (
-                                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
-                            ))}
-                        </Carousel>
                     ) : (
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {events.map((event) => (
-                                <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
-                            ))}
-                        </div>
+                        <>
+                            {/* Mobile: Always Carousel */}
+                            <div className="md:hidden">
+                                <Carousel>
+                                    {events.map((event) => (
+                                        <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
+                                    ))}
+                                </Carousel>
+                            </div>
+
+                            {/* Desktop: Existing Logic */}
+                            <div className="hidden md:block">
+                                {events.length > 3 ? (
+                                    <Carousel>
+                                        {events.map((event) => (
+                                            <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
+                                        ))}
+                                    </Carousel>
+                                ) : (
+                                    <div className="grid md:grid-cols-3 gap-6">
+                                        {events.map((event) => (
+                                            <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </>
                     )}
                 </div>
             </div>

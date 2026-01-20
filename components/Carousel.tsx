@@ -35,7 +35,7 @@ export default function Carousel({ children }: CarouselProps) {
             {/* Left Arrow */}
             <button
                 onClick={() => scroll("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white/90 p-2 rounded-full shadow-lg border border-amber-100 text-brand-ramblue opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0 hover:scale-110 z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-white/90 p-2 rounded-full shadow-lg border border-amber-100 text-brand-ramblue opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity disabled:opacity-0 hover:scale-110 z-10"
                 aria-label="Previous"
             >
                 <ChevronLeftIcon className="w-6 h-6" />
@@ -44,7 +44,7 @@ export default function Carousel({ children }: CarouselProps) {
             {/* Right Arrow */}
             <button
                 onClick={() => scroll("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white/90 p-2 rounded-full shadow-lg border border-amber-100 text-brand-ramblue opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0 hover:scale-110 z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-white/90 p-2 rounded-full shadow-lg border border-amber-100 text-brand-ramblue opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity disabled:opacity-0 hover:scale-110 z-10"
                 aria-label="Next"
             >
                 <ChevronRightIcon className="w-6 h-6" />

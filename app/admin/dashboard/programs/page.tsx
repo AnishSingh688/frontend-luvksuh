@@ -89,53 +89,55 @@ export default function ProgramsManagement() {
             )}
 
             <div className="bg-white/70 backdrop-blur border border-amber-200 rounded-2xl overflow-hidden shadow">
-                <table className="w-full">
-                    <thead className="bg-brand-ramblue text-white">
-                        <tr>
-                            <th className="px-6 py-3 text-left">Title</th>
-                            <th className="px-6 py-3 text-left">Category</th>
-                            <th className="px-6 py-3 text-left">Description</th>
-                            <th className="px-6 py-3 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {programs.length === 0 ? (
+                <div className="overflow-x-auto">
+                    <table className="w-full min-w-[800px]">
+                        <thead className="bg-brand-ramblue text-white">
                             <tr>
-                                <td colSpan={4} className="px-6 py-8 text-center text-slate-500">
-                                    No programs found. Create one to get started!
-                                </td>
+                                <th className="px-6 py-3 text-left">Title</th>
+                                <th className="px-6 py-3 text-left">Category</th>
+                                <th className="px-6 py-3 text-left">Description</th>
+                                <th className="px-6 py-3 text-right">Actions</th>
                             </tr>
-                        ) : (
-                            programs.map((program) => (
-                                <tr key={program.id} className="border-t border-amber-200">
-                                    <td className="px-6 py-4 font-semibold">{program.title}</td>
-                                    <td className="px-6 py-4">
-                                        <span className="px-2 py-1 rounded-full bg-brand-gold/20 text-xs">
-                                            {program.category}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm text-slate-600">
-                                        {program.description.substring(0, 100)}...
-                                    </td>
-                                    <td className="px-6 py-4 text-right">
-                                        <button
-                                            onClick={() => handleEdit(program)}
-                                            className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(program.id)}
-                                            className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
-                                        >
-                                            Delete
-                                        </button>
+                        </thead>
+                        <tbody>
+                            {programs.length === 0 ? (
+                                <tr>
+                                    <td colSpan={4} className="px-6 py-8 text-center text-slate-500">
+                                        No programs found. Create one to get started!
                                     </td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
+                            ) : (
+                                programs.map((program) => (
+                                    <tr key={program.id} className="border-t border-amber-200">
+                                        <td className="px-6 py-4 font-semibold">{program.title}</td>
+                                        <td className="px-6 py-4">
+                                            <span className="px-2 py-1 rounded-full bg-brand-gold/20 text-xs">
+                                                {program.category}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 text-sm text-slate-600">
+                                            {program.description.substring(0, 100)}...
+                                        </td>
+                                        <td className="px-6 py-4 text-right">
+                                            <button
+                                                onClick={() => handleEdit(program)}
+                                                className="mr-2 px-3 py-1 rounded bg-blue-500 text-white text-sm hover:bg-blue-600"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(program.id)}
+                                                className="px-3 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

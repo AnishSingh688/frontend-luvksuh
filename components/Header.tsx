@@ -29,7 +29,7 @@ export default function Header() {
                     <Link href="/#about" className="hover:text-brand-ramblue">About</Link>
                     <Link href="/#programs" className="hover:text-brand-ramblue">Programs</Link>
                     <Link href="/#events" className="hover:text-brand-ramblue">Events</Link>
-                    {/* <Link href="/#membership" className="hover:text-brand-ramblue">Membership</Link> */}
+                    <Link href="/#gallery" className="hover:text-brand-ramblue">Gallery</Link>
                     <Link href="/#contact" className="hover:text-brand-ramblue">Contact</Link>
                     <Link
                         href="/admin/login"
@@ -66,8 +66,9 @@ export default function Header() {
                         <Link href="/#about" className="py-2" onClick={() => setMobileMenuOpen(false)}>About</Link>
                         <Link href="/#programs" className="py-2" onClick={() => setMobileMenuOpen(false)}>Programs</Link>
                         <Link href="/#events" className="py-2" onClick={() => setMobileMenuOpen(false)}>Events</Link>
-                        <Link href="/#membership" className="py-2" onClick={() => setMobileMenuOpen(false)}>Membership</Link>
+                        <Link href="/#gallery" className="py-2" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
                         <Link href="/#contact" className="py-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+                        <Link href="/admin/login" className="py-2 text-brand-ramblue font-medium" onClick={() => setMobileMenuOpen(false)}>Admin Login</Link>
                         <Link
                             href="/#donate"
                             className="inline-flex w-max items-center gap-2 rounded-full bg-gradient-to-r from-brand-saffron to-brand-gold px-4 py-2 text-brand-ramblue shadow"

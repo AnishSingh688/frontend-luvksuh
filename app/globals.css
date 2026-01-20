@@ -102,6 +102,7 @@
     display: none;
   }
 
+
   /* Hide scrollbar for IE, Edge and Firefox */
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -109,4 +110,8 @@
     scrollbar-width: none;
     /* Firefox */
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
