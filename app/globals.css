@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Custom Colors */
+  --color-brand-saffron: #FF9933;
+  --color-brand-forest: #14532D;
+  --color-brand-ramblue: #1E3A8A;
+  --color-brand-gold: #E0B95D;
+
+  /* Custom Font Families */
+  --font-display: "Cinzel", serif;
+  --font-body: "Mukta", system-ui, sans-serif;
+
+  /* Custom Shadows */
+  --shadow-glow: 0 0 0 3px rgba(224, 185, 93, 0.35);
+
+  /* Custom Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 0.8s ease-out both;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(-4px);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Extra CSS for SVG motion and arrow shooting */
+.arrow-flight svg {
+  overflow: visible;
+}
+
+.shoot-arrow {
+  position: fixed;
+  left: -80px;
+  top: 60vh;
+  width: 140px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.shoot-arrow.active {
+  animation: shoot 2.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes shoot {
+  to {
+    transform: translateX(120vw) rotate(-2deg);
+    opacity: 0;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: all 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
