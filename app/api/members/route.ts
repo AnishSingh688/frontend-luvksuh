@@ -39,6 +39,18 @@ export async function POST(request: Request) {
 
         let photoUrl = null;
         if (photo && photo.size > 0) {
+            // Security: Validate file type
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            if (!allowedTypes.includes(photo.type)) {
+                return NextResponse.json({ error: 'Invalid file type. Only JPEG, PNG and WEBP are allowed.' }, { status: 400 });
+            }
+
+            // Security: Limit file size (e.g., 5MB)
+            const MAX_SIZE = 5 * 1024 * 1024;
+            if (photo.size > MAX_SIZE) {
+                return NextResponse.json({ error: 'File too large. Max size is 5MB.' }, { status: 400 });
+            }
+
             // Save file to public/uploads/member
             const bytes = await photo.arrayBuffer();
             const buffer = Buffer.from(bytes);
